@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> cbe140b... Adding license header
 /**
  * Copyright © 2016-2018 The Thingsboard Authors
  * Modifications © 2017-2018 Hashmap, Inc
@@ -14,6 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+<<<<<<< HEAD
+=======
+>>>>>>> d9aeede... Adding integration tests for Customer Group Service
+=======
+>>>>>>> cbe140b... Adding license header
 package com.hashmapinc.server.dao.service.nosql;
 
 import com.hashmapinc.server.dao.service.DaoNoSqlTest;

@@ -79,7 +79,14 @@ public class ModelConstants {
     public static final String USER_LAST_NAME_PROPERTY = "last_name";
     public static final String USER_ADDITIONAL_INFO_PROPERTY = ADDITIONAL_INFO_PROPERTY;
     public static final String USER_GROUP_TABLE_NAME = "user_groups";
+<<<<<<< HEAD
+<<<<<<< HEAD
     public static final String USER_GROUP_COLUMN_FAMILY_NAME = "user_groups";
+=======
+>>>>>>> a9f7a78... #Updated SQL entity and data models for User and group to support group feature with multiple group constraint.
+=======
+    public static final String USER_GROUP_COLUMN_FAMILY_NAME = "user_groups";
+>>>>>>> db89fbe... Changes in group constant for cassandra
 
     public static final String USER_BY_EMAIL_COLUMN_FAMILY_NAME = "user_by_email";
     public static final String USER_BY_TENANT_AND_SEARCH_TEXT_COLUMN_FAMILY_NAME = "user_by_tenant_and_search_text";
@@ -541,9 +548,24 @@ public class ModelConstants {
     public static final String CUSTOMER_GROUP_TITLE_PROPERTY = TITLE_PROPERTY;
     public static final String CUSTOMER_GROUP_TENANT_ID_PROPERTY = TENANT_ID_PROPERTY;
     public static final String CUSTOMER_GROUP_CUSTOMER_ID_PROPERTY = CUSTOMER_ID_PROPERTY;
+<<<<<<< HEAD
+<<<<<<< HEAD
     public static final String CUSTOMER_GROUP_BY_TENANT_AND_CUSTOMER_AND_TITLE_VIEW_NAME = "customer_group_by_tenant_and_customer_and_title";
     public static final String CUSTOMER_GROUP_BY_TENANT_AND_CUSTOMER_SEARCH_TEXT_COLUMN_FAMILY_NAME = "group_by_tenant_and_customer_and_search_text";
     public static final String CUSTOMER_GROUP_ID_PROPERTY = "group_id";
+
+=======
+    public static final String CUSTOMER_GROUP_BY_TENANT_AND_CUSTOMER_AND_TITLE_VIEW_NAME = "customer_by_tenant_and_customer_and_title";
+    public static final String CUSTOMER_GROUP_BY_TENANT_AND_CUSTOMER_SEARCH_TEXT_COLUMN_FAMILY_NAME = "customer_by_tenant_and_customer_and_search_text";
+<<<<<<< HEAD
+>>>>>>> 08741e7... #Added Cassandra DAO implementation for customer group
+=======
+=======
+    public static final String CUSTOMER_GROUP_BY_TENANT_AND_CUSTOMER_AND_TITLE_VIEW_NAME = "customer_group_by_tenant_and_customer_and_title";
+    public static final String CUSTOMER_GROUP_BY_TENANT_AND_CUSTOMER_SEARCH_TEXT_COLUMN_FAMILY_NAME = "group_by_tenant_and_customer_and_search_text";
+>>>>>>> db89fbe... Changes in group constant for cassandra
+    public static final String CUSTOMER_GROUP_ID_PROPERTY = "group_id";
+>>>>>>> 48f766b... #Updated user and groups model to have only corresponding ids as a property instead of whole objects. Also, updated service and controller methods accordingly.
 
 
     /**
@@ -556,6 +578,13 @@ public class ModelConstants {
     /**
      * Cassandra CustomerGroup Policy Constants
      */
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 605c899... adding NoSql Entity for CustomerGroup
+=======
+>>>>>>> db89fbe... Changes in group constant for cassandra
     public static final String CUSTOMER_GROUP_POLICY_COLUMN_FAMILY_NAME = "customer_group_policy";
     public static final String CUSTOMER_GROUP_POLICY_ID_PROPERTY = "group_id";
     public static final String CUSTOMER_GROUP_POLICY_PROPERTY = "policies";

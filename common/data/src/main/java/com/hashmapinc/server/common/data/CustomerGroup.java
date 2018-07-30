@@ -1,6 +1,15 @@
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright © 2016-2018 The Thingsboard Authors
  * Modifications © 2017-2018 Hashmap, Inc
+=======
+ * Copyright © 2017-2018 Hashmap, Inc
+>>>>>>> 2a1e3c7... #Added missing headers.
+=======
+ * Copyright © 2016-2018 The Thingsboard Authors
+ * Modifications © 2017-2018 Hashmap, Inc
+>>>>>>> 8ca597b... changing license header
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +26,14 @@
 package com.hashmapinc.server.common.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+<<<<<<< HEAD
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonProperty;
+=======
+>>>>>>> a9f7a78... #Updated SQL entity and data models for User and group to support group feature with multiple group constraint.
+=======
+import com.fasterxml.jackson.annotation.JsonProperty;
+>>>>>>> ac321dd... Adding json property to read only for name
 import com.hashmapinc.server.common.data.id.CustomerGroupId;
 import com.hashmapinc.server.common.data.id.CustomerId;
 import com.hashmapinc.server.common.data.id.TenantId;
@@ -38,7 +54,15 @@ public class CustomerGroup extends SearchTextBasedWithAdditionalInfo<CustomerGro
     private CustomerId customerId;
     private List<String> policies;
     @JsonIgnore
+<<<<<<< HEAD
+<<<<<<< HEAD
     private List<UserId> userIds;
+=======
+    private List<User> users;
+>>>>>>> a9f7a78... #Updated SQL entity and data models for User and group to support group feature with multiple group constraint.
+=======
+    private List<UserId> userIds;
+>>>>>>> 494385c... #Updated model and entities for user and group. To have only ids instead of objects for many to many relationship.
 
     public CustomerGroup(CustomerGroupId id) {
         super(id);
@@ -50,7 +74,15 @@ public class CustomerGroup extends SearchTextBasedWithAdditionalInfo<CustomerGro
         this.tenantId = customerGroup.tenantId;
         this.customerId = customerGroup.customerId;
         this.policies = customerGroup.policies;
+<<<<<<< HEAD
+<<<<<<< HEAD
         this.userIds = customerGroup.userIds;
+=======
+        this.users = customerGroup.users;
+>>>>>>> a9f7a78... #Updated SQL entity and data models for User and group to support group feature with multiple group constraint.
+=======
+        this.userIds = customerGroup.userIds;
+>>>>>>> 494385c... #Updated model and entities for user and group. To have only ids instead of objects for many to many relationship.
     }
 
     @Override

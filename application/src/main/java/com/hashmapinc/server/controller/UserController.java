@@ -310,17 +310,40 @@ public class UserController extends BaseController {
                 throw new TempusException(YOU_DON_T_HAVE_PERMISSION_TO_PERFORM_THIS_OPERATION,
                         TempusErrorCode.PERMISSION_DENIED);
             }
+<<<<<<< HEAD
+<<<<<<< HEAD
             TextPageLink pageLink = createPageLink(limit, textSearch, idOffset, textOffset);
             return customerGroupService.findByUserId(userId, pageLink);
+=======
+            final User user = checkNotNull(checkUserId(userId));
+            TextPageLink pageLink = createPageLink(limit, textSearch, idOffset, textOffset);
+            return new TextPageData<>(user.getGroups(), pageLink);
+>>>>>>> 43ee32c... #Added controller changes for group support for users
+=======
+            TextPageLink pageLink = createPageLink(limit, textSearch, idOffset, textOffset);
+            return customerGroupService.findByUserId(userId, pageLink);
+>>>>>>> 48f766b... #Updated user and groups model to have only corresponding ids as a property instead of whole objects. Also, updated service and controller methods accordingly.
         } catch (Exception e) {
             throw handleException(e);
         }
     }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
     @PreAuthorize("hasAuthority('TENANT_ADMIN')")
     @PostMapping(value = "/user/{userId}/groups")
     @ResponseBody
     public User assignGroupsToUser(
+=======
+    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
+    @PostMapping(value = "/user/{userId}/groups")
+    @ResponseBody
+<<<<<<< HEAD
+    public User assignGropusToUser(
+>>>>>>> 1af01a8... Added assingGroups to user support.
+=======
+    public User assignGroupsToUser(
+>>>>>>> 45851df... added user controller api to unassign group
             @PathVariable(USER_ID) String strUserId ,
             @RequestBody List<UUID> groupUuids) throws TempusException {
         checkParameter(USER_ID, strUserId);
@@ -335,9 +358,20 @@ public class UserController extends BaseController {
             throw handleException(e);
         }
     }
+<<<<<<< HEAD
+<<<<<<< HEAD
 
     @PreAuthorize("hasAuthority('TENANT_ADMIN')")
     @PutMapping(value = "/user/{userId}/groups")
+=======
+
+    @PreAuthorize("hasAuthority('TENANT_ADMIN')")
+<<<<<<< HEAD
+    @DeleteMapping(value = "/user/{userId}/groups")
+>>>>>>> 45851df... added user controller api to unassign group
+=======
+    @PutMapping(value = "/user/{userId}/groups")
+>>>>>>> 5dd0fab... Changing request mapping from delete to put
     @ResponseBody
     public User unassignGroupsFromUser(
             @PathVariable(USER_ID) String strUserId ,
@@ -354,4 +388,12 @@ public class UserController extends BaseController {
             throw handleException(e);
         }
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 43ee32c... #Added controller changes for group support for users
+=======
+>>>>>>> 1af01a8... Added assingGroups to user support.
+=======
+>>>>>>> 45851df... added user controller api to unassign group
 }

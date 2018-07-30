@@ -43,7 +43,15 @@ public class User extends SearchTextBasedWithAdditionalInfo<UserId> implements H
     private String firstName;
     private String lastName;
     @JsonIgnore
+<<<<<<< HEAD
+<<<<<<< HEAD
     private List<CustomerGroupId> groupIds;
+=======
+    private List<CustomerGroup> groups;
+>>>>>>> a9f7a78... #Updated SQL entity and data models for User and group to support group feature with multiple group constraint.
+=======
+    private List<CustomerGroupId> groupIds;
+>>>>>>> 494385c... #Updated model and entities for user and group. To have only ids instead of objects for many to many relationship.
 
     public User() {
         super();
@@ -62,7 +70,15 @@ public class User extends SearchTextBasedWithAdditionalInfo<UserId> implements H
         this.permissions = user.getPermissions();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();
+<<<<<<< HEAD
+<<<<<<< HEAD
         this.groupIds = user.getGroupIds();
+=======
+        this.groups = user.getGroups();
+>>>>>>> a9f7a78... #Updated SQL entity and data models for User and group to support group feature with multiple group constraint.
+=======
+        this.groupIds = user.getGroupIds();
+>>>>>>> 494385c... #Updated model and entities for user and group. To have only ids instead of objects for many to many relationship.
     }
 
     public TenantId getTenantId() {
@@ -127,12 +143,30 @@ public class User extends SearchTextBasedWithAdditionalInfo<UserId> implements H
         this.lastName = lastName;
     }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
     public List<CustomerGroupId> getGroupIds() {
         return groupIds;
     }
 
     public void setGroupIds(List<CustomerGroupId> groupIds) {
         this.groupIds = groupIds;
+=======
+    public List<CustomerGroup> getGroups() {
+        return groups;
+    }
+
+    public void setGroups(List<CustomerGroup> groups) {
+        this.groups = groups;
+>>>>>>> a9f7a78... #Updated SQL entity and data models for User and group to support group feature with multiple group constraint.
+=======
+    public List<CustomerGroupId> getGroupIds() {
+        return groupIds;
+    }
+
+    public void setGroupIds(List<CustomerGroupId> groupIds) {
+        this.groupIds = groupIds;
+>>>>>>> 494385c... #Updated model and entities for user and group. To have only ids instead of objects for many to many relationship.
     }
 
     @Override

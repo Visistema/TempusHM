@@ -1,6 +1,15 @@
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright © 2016-2018 The Thingsboard Authors
  * Modifications © 2017-2018 Hashmap, Inc
+=======
+ * Copyright © 2017-2018 Hashmap, Inc
+>>>>>>> 1b6c3e4... #Added DAO interface for customer group
+=======
+ * Copyright © 2016-2018 The Thingsboard Authors
+ * Modifications © 2017-2018 Hashmap, Inc
+>>>>>>> 8ca597b... changing license header
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +26,18 @@
 package com.hashmapinc.server.dao.customergroup;
 
 import com.hashmapinc.server.common.data.CustomerGroup;
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c08cec8... #Added assingUsers to group support.
 import com.hashmapinc.server.common.data.id.CustomerGroupId;
 import com.hashmapinc.server.common.data.id.UserId;
+=======
+>>>>>>> 1b6c3e4... #Added DAO interface for customer group
+=======
+import com.hashmapinc.server.common.data.id.UserId;
+>>>>>>> 48f766b... #Updated user and groups model to have only corresponding ids as a property instead of whole objects. Also, updated service and controller methods accordingly.
 import com.hashmapinc.server.common.data.page.TextPageLink;
 import com.hashmapinc.server.dao.Dao;
 
@@ -39,6 +58,8 @@ public interface CustomerGroupDao extends Dao<CustomerGroup> {
     CustomerGroup save(CustomerGroup customerGroup);
 
     /**
+<<<<<<< HEAD
+<<<<<<< HEAD
      * Find customerGroups by tenantId, customerId and page link.
      *
      * @param tenantId the tenantId
@@ -74,6 +95,10 @@ public interface CustomerGroupDao extends Dao<CustomerGroup> {
      */
     void deleteUserIdsForCustomerGroupId(UUID customerGroupId);
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 27a2dbe... #On delete user, delete groups relationships as well.
     /**
      * Delete Group IDs by userId.
      *
@@ -82,6 +107,11 @@ public interface CustomerGroupDao extends Dao<CustomerGroup> {
      */
     void deleteGroupIdsForUserId(UUID userId);
 
+<<<<<<< HEAD
+=======
+>>>>>>> 48f766b... #Updated user and groups model to have only corresponding ids as a property instead of whole objects. Also, updated service and controller methods accordingly.
+=======
+>>>>>>> 27a2dbe... #On delete user, delete groups relationships as well.
 
     /**
      * Find Customer groups by user id.
@@ -91,6 +121,10 @@ public interface CustomerGroupDao extends Dao<CustomerGroup> {
      * @return the list of customer group objects
      */
     List<CustomerGroup> findByUserId(UUID userId, TextPageLink textPageLink);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c08cec8... #Added assingUsers to group support.
 
     /**
      * Assign Users to groups by id.
@@ -99,6 +133,18 @@ public interface CustomerGroupDao extends Dao<CustomerGroup> {
      * @param userIds list of userId objects
      */
     void assignUsers(CustomerGroupId customerGroupId, List<UserId> userIds);
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+    /**
+     * Unassign Users to groups by id.
+     *
+     * @param customerGroupId the customerGroupId
+     * @param userIds list of userId objects
+     */
+    void unassignUsers(CustomerGroupId customerGroupId, List<UserId> userIds);
+=======
+>>>>>>> 1af01a8... Added assingGroups to user support.
 
     /**
      * Unassign Users to groups by id.
@@ -115,6 +161,10 @@ public interface CustomerGroupDao extends Dao<CustomerGroup> {
      * @param customerGroupIds list of customerGroupId objects
      */
     void assignGroups(UserId userId , List<CustomerGroupId> customerGroupIds);
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 29d4a4d... Added api to unassignUsers and unassignGroup
 
     /**
      * Unassign Groups to user by id.
@@ -123,4 +173,48 @@ public interface CustomerGroupDao extends Dao<CustomerGroup> {
      * @param customerGroupIds list of customerGroupId objects
      */
     void unassignGroups(UserId userId , List<CustomerGroupId> customerGroupIds);
+<<<<<<< HEAD
+=======
+     * Find customerGroups by tenant id and page link.
+     *
+     * @param tenantId the tenant id
+     * @param pageLink the page link
+     * @return the list of customerGroup objects
+     */
+    List<CustomerGroup> findCustomerGroupsByTenantId(UUID tenantId, TextPageLink pageLink);
+
+    /**
+=======
+>>>>>>> e898424... #Updated method in DAO interface for customer group
+     * Find customerGroups by tenantId, customerId and page link.
+     *
+     * @param tenantId the tenantId
+     * @param customerId the customerId
+     * @param pageLink the page link
+     * @return the list of customerGroup objects
+     */
+    List<CustomerGroup> findCustomerGroupsByTenantIdAndCustomerId(UUID tenantId, UUID customerId, TextPageLink pageLink);
+
+    /**
+     * Find customerGroups by tenantId and customerGroup title.
+     *
+     * @param tenantId the tenantId
+     * @param customerId the customerId
+     * @param title the customerGroup title
+     * @return the list of customerGroup objects
+     */
+<<<<<<< HEAD
+    Optional<CustomerGroup> findCustomerGroupsByTenantIdAndTitle(UUID tenantId, String title);
+>>>>>>> 1b6c3e4... #Added DAO interface for customer group
+=======
+    Optional<CustomerGroup> findCustomerGroupsByTenantIdAndCustomerIdAndTitle(UUID tenantId, UUID customerId, String title);
+>>>>>>> e898424... #Updated method in DAO interface for customer group
+=======
+>>>>>>> 48f766b... #Updated user and groups model to have only corresponding ids as a property instead of whole objects. Also, updated service and controller methods accordingly.
+=======
+>>>>>>> c08cec8... #Added assingUsers to group support.
+=======
+>>>>>>> 1af01a8... Added assingGroups to user support.
+=======
+>>>>>>> 29d4a4d... Added api to unassignUsers and unassignGroup
 }

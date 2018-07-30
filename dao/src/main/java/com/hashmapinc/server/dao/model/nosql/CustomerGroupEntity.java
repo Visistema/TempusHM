@@ -1,6 +1,15 @@
 /**
+<<<<<<< HEAD
+<<<<<<< HEAD
  * Copyright © 2016-2018 The Thingsboard Authors
  * Modifications © 2017-2018 Hashmap, Inc
+=======
+ * Copyright © 2017-2018 Hashmap, Inc
+>>>>>>> 605c899... adding NoSql Entity for CustomerGroup
+=======
+ * Copyright © 2016-2018 The Thingsboard Authors
+ * Modifications © 2017-2018 Hashmap, Inc
+>>>>>>> 8ca597b... changing license header
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,6 +42,19 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import javax.persistence.CollectionTable;
+import javax.persistence.ElementCollection;
+import javax.persistence.JoinColumn;
+<<<<<<< HEAD
+>>>>>>> 605c899... adding NoSql Entity for CustomerGroup
+=======
+import javax.persistence.ManyToMany;
+>>>>>>> 494385c... #Updated model and entities for user and group. To have only ids instead of objects for many to many relationship.
+=======
+>>>>>>> dae8593... Changed nosql group entity
 import java.util.List;
 import java.util.UUID;
 
@@ -53,6 +75,8 @@ public class CustomerGroupEntity implements SearchTextEntity<CustomerGroup> {
     @Column(name = CUSTOMER_GROUP_TENANT_ID_PROPERTY)
     private UUID tenantId;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
     @PartitionKey(value = 2)
     @Column(name = CUSTOMER_GROUP_CUSTOMER_ID_PROPERTY)
     private UUID customerId;
@@ -60,6 +84,25 @@ public class CustomerGroupEntity implements SearchTextEntity<CustomerGroup> {
     @Column(name = CUSTOMER_GROUP_TITLE_PROPERTY)
     private String title;
 
+=======
+    @Column(name = CUSTOMER_GROUP_TITLE_PROPERTY)
+    private String title;
+
+    @Column(name = CUSTOMER_GROUP_CUSTOMER_ID_PROPERTY)
+    private UUID customerId;
+
+    @ElementCollection()
+    @CollectionTable(name = ModelConstants.CUSTOMER_GROUP_POLICY_COLUMN_FAMILY_NAME, joinColumns = @JoinColumn(name = ModelConstants.CUSTOMER_GROUP_POLICY_ID_PROPERTY))
+>>>>>>> 605c899... adding NoSql Entity for CustomerGroup
+=======
+    @PartitionKey(value = 2)
+    @Column(name = CUSTOMER_GROUP_CUSTOMER_ID_PROPERTY)
+    private UUID customerId;
+
+    @Column(name = CUSTOMER_GROUP_TITLE_PROPERTY)
+    private String title;
+
+>>>>>>> dae8593... Changed nosql group entity
     @Column(name = ModelConstants.CUSTOMER_GROUP_POLICY_PROPERTY)
     private List<String> policies;
 
@@ -76,9 +119,19 @@ public class CustomerGroupEntity implements SearchTextEntity<CustomerGroup> {
         this.tenantId = customerGroup.getTenantId().getId();
         this.customerId = customerGroup.getCustomerId().getId();
         this.title = customerGroup.getTitle();
+<<<<<<< HEAD
+<<<<<<< HEAD
         if (customerGroup.getPolicies() != null && !customerGroup.getPolicies().isEmpty()) {
             this.policies = customerGroup.getPolicies();
         }
+=======
+        this.policies = customerGroup.getPolicies();
+>>>>>>> 605c899... adding NoSql Entity for CustomerGroup
+=======
+        if (customerGroup.getPolicies() != null && !customerGroup.getPolicies().isEmpty()) {
+            this.policies = customerGroup.getPolicies();
+        }
+>>>>>>> cff5b04... Adding changes in customer group entity
         this.additionalInfo = customerGroup.getAdditionalInfo();
     }
 
@@ -100,9 +153,22 @@ public class CustomerGroupEntity implements SearchTextEntity<CustomerGroup> {
         customerGroup.setCustomerId(new CustomerId(customerId));
         customerGroup.setTitle(title);
         customerGroup.setAdditionalInfo(additionalInfo);
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
         if (policies != null && !policies.isEmpty()) {
             customerGroup.setPolicies(policies);
         }
+=======
+>>>>>>> 605c899... adding NoSql Entity for CustomerGroup
+=======
+        customerGroup.setPolicies(policies);
+>>>>>>> afd3d24... #Fixed Issue: Policies are not coming in CustomerGroup model.
+=======
+        if (policies != null && !policies.isEmpty()) {
+            customerGroup.setPolicies(policies);
+        }
+>>>>>>> cff5b04... Adding changes in customer group entity
         return customerGroup;
     }
 }

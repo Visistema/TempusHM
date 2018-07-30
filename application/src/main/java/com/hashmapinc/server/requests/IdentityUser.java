@@ -78,6 +78,18 @@ public class IdentityUser {
             user.setCustomerId(new CustomerId(customerId));
         }
         user.setAuthority(Authority.parse(authorities.get(0)));
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        user.setPermissions(permissions);
+=======
+>>>>>>> a9f7a78... #Updated SQL entity and data models for User and group to support group feature with multiple group constraint.
+        String customerGroupId = additionalDetails.get(ModelConstants.USER_CUSTOMER_GROUP_ID_PROPERTY);
+        user.setCustomerGroupId(CustomerGroupId.fromString(customerGroupId));
+>>>>>>> 8f66f39... #Updated user model and entity to support group. Also, added upgrade datastore scripts.
+=======
+>>>>>>> 48f766b... #Updated user and groups model to have only corresponding ids as a property instead of whole objects. Also, updated service and controller methods accordingly.
         return user;
     }
 }

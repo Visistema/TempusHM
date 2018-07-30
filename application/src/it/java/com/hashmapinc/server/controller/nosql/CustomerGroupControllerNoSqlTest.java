@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> f3da61b... Adding missing license header
 /**
  * Copyright © 2016-2018 The Thingsboard Authors
  * Modifications © 2017-2018 Hashmap, Inc
@@ -14,6 +18,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+<<<<<<< HEAD
+=======
+>>>>>>> abe82a7... Adding customer group controller intergration tests
+=======
+>>>>>>> f3da61b... Adding missing license header
 package com.hashmapinc.server.controller.nosql;
 
 import com.hashmapinc.server.controller.BaseCustomerGroupControllerTest;
