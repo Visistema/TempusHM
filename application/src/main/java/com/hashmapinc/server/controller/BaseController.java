@@ -26,6 +26,7 @@ import com.hashmapinc.server.common.data.id.*;
 import com.hashmapinc.server.common.data.page.TextPageLink;
 import com.hashmapinc.server.common.data.plugin.ComponentDescriptor;
 import com.hashmapinc.server.dao.cluster.NodeMetricService;
+import com.hashmapinc.server.dao.customergroup.CustomerGroupService;
 import com.hashmapinc.server.dao.datamodel.DataModelObjectService;
 import com.hashmapinc.server.dao.datamodel.DataModelService;
 import com.hashmapinc.server.dao.device.DeviceCredentialsService;
@@ -148,6 +149,9 @@ public abstract class BaseController {
 
     @Autowired
     protected NodeMetricService nodeMetricService;
+
+    @Autowired
+    protected CustomerGroupService customerGroupService;
 
 
     @ExceptionHandler(TempusException.class)
@@ -274,6 +278,23 @@ public abstract class BaseController {
         }
     }
 
+    CustomerGroup checkCustomerGroupId(CustomerGroupId customerGroupId) throws TempusException {
+        try {
+            validateId(customerGroupId, "Incorrect customerGroupId " + customerGroupId);
+            SecurityUser authUser = getCurrentUser();
+            if (authUser.getAuthority() == Authority.SYS_ADMIN ||
+                    (authUser.getAuthority() != Authority.TENANT_ADMIN)) {
+                throw new TempusException(YOU_DON_T_HAVE_PERMISSION_TO_PERFORM_THIS_OPERATION,
+                        TempusErrorCode.PERMISSION_DENIED);
+            }
+            CustomerGroup customerGroup = customerGroupService.findByCustomerGroupId(customerGroupId);
+            checkCustomerGroup(customerGroup);
+            return customerGroup;
+        } catch (Exception e) {
+            throw handleException(e, false);
+        }
+    }
+
     Long checkLong(String value, String paramName) {
         try {
            return Long.parseLong(value);
@@ -294,6 +315,12 @@ public abstract class BaseController {
     private void checkCustomer(Customer customer) throws TempusException {
         checkNotNull(customer);
         checkTenantId(customer.getTenantId());
+    }
+
+    private void checkCustomerGroup(CustomerGroup customerGroup) throws TempusException {
+        checkNotNull(customerGroup);
+        checkTenantId(customerGroup.getTenantId());
+        checkCustomerId(customerGroup.getCustomerId());
     }
 
     User checkUserId(UserId userId) throws TempusException {
