@@ -59,7 +59,7 @@ export default function DeleteUsersToGroupController($scope, toast, $translate, 
             if (vm.users.hasNext && !vm.users.pending) {
                 vm.users.pending = true;
 
-                userService.getCustomerUsers(vm.customerId, vm.users.nextPageLink).then(
+                usergroupService.assignedUsers(vm.groupId, vm.users.nextPageLink).then(
                     function success(users) {
                         vm.users.data = vm.users.data.concat(users.data);
                         vm.users.nextPageLink = users.nextPageLink;
@@ -130,7 +130,7 @@ export default function DeleteUsersToGroupController($scope, toast, $translate, 
                 limit: vm.users.pageSize,
                 textSearch: vm.searchText
             },
-            selections: {},
+            selections: [],
             selectedCount: 0,
             hasNext: true,
             pending: false

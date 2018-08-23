@@ -86,6 +86,7 @@ export default function AddUsersToGroupController($scope, toast, userService, us
                 userService.getCustomerUsers(vm.customerId, vm.users.nextPageLink).then(
                     function success(users) {
                         vm.users.data = vm.users.data.concat(users.data);
+                        $scope.assignedUsers();
                         vm.users.nextPageLink = users.nextPageLink;
                         vm.users.hasNext = users.hasNext;
                         if (vm.users.hasNext) {
@@ -156,7 +157,7 @@ export default function AddUsersToGroupController($scope, toast, userService, us
                 limit: vm.users.pageSize,
                 textSearch: vm.searchText
             },
-            selections: {},
+            selections: [],
             selectedCount: 0,
             hasNext: true,
             pending: false

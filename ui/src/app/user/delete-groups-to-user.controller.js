@@ -31,7 +31,7 @@ export default function DeleteGroupsToUserController($scope, toast, userService,
     vm.searchUserTextUpdated = searchUserTextUpdated;
     vm.toggleUserSelection = toggleUserSelection;
     vm.customerId = customerId;
-    vm.groupId = userId;
+    vm.userId = userId;
     //vm.email =[];
     vm.theUsers = {
         getItemAtIndex: function (index) {
@@ -59,7 +59,7 @@ export default function DeleteGroupsToUserController($scope, toast, userService,
             if (vm.users.hasNext && !vm.users.pending) {
                 vm.users.pending = true;
 
-                userService.getCustomerUsers(vm.customerId,vm.users.nextPageLink).then(
+                usergroupService.assignedGroups(vm.userId,vm.users.nextPageLink).then(
                     function success(users) {
                         vm.users.data = vm.users.data.concat(users.data);
                         vm.users.nextPageLink = users.nextPageLink;
@@ -82,7 +82,7 @@ export default function DeleteGroupsToUserController($scope, toast, userService,
     }
 
     function unassign() {
-        usergroupService.unassignGroupToUser(vm.groupId,vm.users.selections).then(
+        usergroupService.unassignGroupToUser(vm.userId,vm.users.selections).then(
 
             function success() {
 
@@ -129,7 +129,7 @@ export default function DeleteGroupsToUserController($scope, toast, userService,
                 limit: vm.users.pageSize,
                 textSearch: vm.searchText
             },
-            selections: {},
+            selections: [],
             selectedCount: 0,
             hasNext: true,
             pending: false

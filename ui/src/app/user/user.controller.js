@@ -27,7 +27,7 @@ import unassignGroupsToUsers from './unassign-to-user.tpl.html';
 
 
 /*@ngInject*/
-export default function UserController(usergroupService, $log, userService, toast, $scope, $mdDialog, $document, $controller, $state, $stateParams, $translate, types) {
+export default function UserController(usergroupService, userService, toast, $scope, $mdDialog, $document, $controller, $state, $stateParams, $translate, types) {
 
     var tenantId = $stateParams.tenantId;
     var customerId = $stateParams.customerId;
@@ -254,7 +254,7 @@ export default function UserController(usergroupService, $log, userService, toas
                 }, function() {});
 
 
-                $log.log(users, id);
+
             },
             function fail() {});
 
@@ -304,7 +304,7 @@ export default function UserController(usergroupService, $log, userService, toas
                  }, function() {});
 
 
-                 $log.log(users, id);
+
              },
              function fail() {});
 

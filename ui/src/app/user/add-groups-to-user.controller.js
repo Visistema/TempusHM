@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 /*@ngInject*/
-export default function AddGroupsToUserController($scope, toast, $translate, userService, usergroupService, $mdDialog, userId, users, customerId, $log) {
+export default function AddGroupsToUserController($scope, toast, $translate, userService, usergroupService, $mdDialog, userId, users, customerId) {
 
     var vm = this;
 
@@ -34,17 +34,17 @@ export default function AddGroupsToUserController($scope, toast, $translate, use
     vm.groupId = userId;
     vm.groupName = [];
     //vm.email =[];
-    $scope.assignedUsers = function() {
+    $scope.assignedGroups = function() {
         var pageSize = 100;
         usergroupService.assignedGroups(vm.groupId, {
             limit: pageSize,
             textSearch: ''
         }).then(
             function success(assignusers) {
-                $log.log(assignusers);
+
                 if (assignusers.data.length > 0) {
                     angular.forEach(assignusers.data, function(value) {
-                        $log.log(value);
+
                         vm.groupName.push(value.name);
                     });
                     vm.users.data = vm.users.data.filter(function(e) {
@@ -59,7 +59,7 @@ export default function AddGroupsToUserController($scope, toast, $translate, use
     };
 
 
-    $scope.assignedUsers();
+    $scope.assignedGroups();
 
     vm.theUsers = {
         getItemAtIndex: function(index) {
@@ -72,7 +72,7 @@ export default function AddGroupsToUserController($scope, toast, $translate, use
                 item.indexNumber = index + 1;
             }
 
-            // $log.log(item);
+
             return item;
         },
 
@@ -88,9 +88,10 @@ export default function AddGroupsToUserController($scope, toast, $translate, use
             if (vm.users.hasNext && !vm.users.pending) {
                 vm.users.pending = true;
 
-                userService.getCustomerUsers(vm.customerId, vm.users.nextPageLink).then(
+                usergroupService.getGroups(vm.customerId, vm.users.nextPageLink).then(
                     function success(users) {
                         vm.users.data = vm.users.data.concat(users.data);
+                        $scope.assignedGroups();
                         vm.users.nextPageLink = users.nextPageLink;
                         vm.users.hasNext = users.hasNext;
                         if (vm.users.hasNext) {
@@ -112,7 +113,7 @@ export default function AddGroupsToUserController($scope, toast, $translate, use
 
     function assign() {
         //var tasks = [];
-        // $log.log(vm.users.selections);
+
         usergroupService.assignGroupToUser(vm.groupId, vm.users.selections).then(
 
             function success() {
@@ -137,7 +138,7 @@ export default function AddGroupsToUserController($scope, toast, $translate, use
     }
 
     function toggleUserSelection($event, user) {
-        $log.log(user.selected);
+
         $event.stopPropagation();
         var selected = angular.isDefined(user.selected) && user.selected;
 
@@ -152,7 +153,7 @@ export default function AddGroupsToUserController($scope, toast, $translate, use
             vm.users.selectedCount--;
         }
     }
-    $log.log(vm.users.selectedCount);
+
 
     function searchUserTextUpdated() {
         vm.users = {
@@ -162,7 +163,7 @@ export default function AddGroupsToUserController($scope, toast, $translate, use
                 limit: vm.users.pageSize,
                 textSearch: vm.searchText
             },
-            selections: {},
+            selections: [],
             selectedCount: 0,
             hasNext: true,
             pending: false
