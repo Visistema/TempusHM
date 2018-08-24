@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 /*@ngInject*/
-export default function DeleteGroupsToUserController($scope, toast, userService,usergroupService, $mdDialog, userId, users, customerId, $translate) {
+export default function UnassignGroupsFromUserController($scope, toast, userService,userGroupService, $mdDialog, userId, users, customerId, $translate) {
 
     var vm = this;
 
@@ -59,7 +59,7 @@ export default function DeleteGroupsToUserController($scope, toast, userService,
             if (vm.users.hasNext && !vm.users.pending) {
                 vm.users.pending = true;
 
-                usergroupService.assignedGroups(vm.userId,vm.users.nextPageLink).then(
+                userGroupService.assignedGroups(vm.userId,vm.users.nextPageLink).then(
                     function success(users) {
                         vm.users.data = vm.users.data.concat(users.data);
                         vm.users.nextPageLink = users.nextPageLink;
@@ -82,7 +82,7 @@ export default function DeleteGroupsToUserController($scope, toast, userService,
     }
 
     function unassign() {
-        usergroupService.unassignGroupToUser(vm.userId,vm.users.selections).then(
+        userGroupService.unassignGroupToUser(vm.userId,vm.users.selections).then(
 
             function success() {
 

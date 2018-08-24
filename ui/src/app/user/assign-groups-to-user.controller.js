@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 /*@ngInject*/
-export default function DeleteUsersToGroupController($scope, toast, $translate, userService, usergroupService, $mdDialog, groupId, users, customerId) {
+export default function AssignGroupsToUserController($scope, toast, $translate, userService, userGroupService, $mdDialog, userId, users, customerId) {
 
     var vm = this;
 
@@ -24,15 +24,42 @@ export default function DeleteUsersToGroupController($scope, toast, $translate, 
     vm.searchText = '';
     vm.users.selectedCount = 0;
 
-    vm.unassign = unassign;
+    vm.assign = assign;
     vm.cancel = cancel;
     vm.hasData = hasData;
     vm.noData = noData;
     vm.searchUserTextUpdated = searchUserTextUpdated;
     vm.toggleUserSelection = toggleUserSelection;
     vm.customerId = customerId;
-    vm.groupId = groupId;
-    vm.email = [];
+    vm.groupId = userId;
+    vm.groupName = [];
+    //vm.email =[];
+    $scope.assignedGroups = function() {
+        var pageSize = 100;
+        userGroupService.assignedGroups(vm.groupId, {
+            limit: pageSize,
+            textSearch: ''
+        }).then(
+            function success(assignusers) {
+
+                if (assignusers.data.length > 0) {
+                    angular.forEach(assignusers.data, function(value) {
+
+                        vm.groupName.push(value.name);
+                    });
+                    vm.users.data = vm.users.data.filter(function(e) {
+                        return vm.groupName.indexOf(e.name) == -1;
+                    });
+                    vm.users.selections = [];
+                }
+            },
+            function fail() {
+
+            });
+    };
+
+
+    $scope.assignedGroups();
 
     vm.theUsers = {
         getItemAtIndex: function(index) {
@@ -44,6 +71,8 @@ export default function DeleteUsersToGroupController($scope, toast, $translate, 
             if (item) {
                 item.indexNumber = index + 1;
             }
+
+
             return item;
         },
 
@@ -59,9 +88,10 @@ export default function DeleteUsersToGroupController($scope, toast, $translate, 
             if (vm.users.hasNext && !vm.users.pending) {
                 vm.users.pending = true;
 
-                usergroupService.assignedUsers(vm.groupId, vm.users.nextPageLink).then(
+                userGroupService.getGroups(vm.customerId, vm.users.nextPageLink).then(
                     function success(users) {
                         vm.users.data = vm.users.data.concat(users.data);
+                        $scope.assignedGroups();
                         vm.users.nextPageLink = users.nextPageLink;
                         vm.users.hasNext = users.hasNext;
                         if (vm.users.hasNext) {
@@ -81,14 +111,15 @@ export default function DeleteUsersToGroupController($scope, toast, $translate, 
         $mdDialog.cancel();
     }
 
-    function unassign() {
+    function assign() {
         //var tasks = [];
-        usergroupService.unassignUserToGroup(vm.groupId, vm.users.selections).then(
+
+        userGroupService.assignGroupToUser(vm.groupId, vm.users.selections).then(
 
             function success() {
 
                 $mdDialog.cancel();
-                toast.showSuccess($translate.instant('user.group-unassigned-message'));
+                toast.showSuccess($translate.instant('user.user-assigned-message'));
 
             },
 
@@ -122,6 +153,8 @@ export default function DeleteUsersToGroupController($scope, toast, $translate, 
             vm.users.selectedCount--;
         }
     }
+
+
     function searchUserTextUpdated() {
         vm.users = {
             pageSize: vm.users.pageSize,

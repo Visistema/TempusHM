@@ -23,11 +23,11 @@
 import addDataModel from './add-group.tpl.html';
 import userCard from './user-card.tpl.html';
 import assignUserToGroups from './assign-to-group.tpl.html';
-import unassignUserToGroups from './unassign-to-group.tpl.html';
+import unassignUserToGroups from './unassign-from-group.tpl.html';
 
 /*@ngInject*/
 
-export default function UserGroupController($scope, $state, types, $stateParams, $mdDialog, $document, usergroupService, $q, userService, $translate) {
+export default function UserGroupController($scope, $state, types, $stateParams, $mdDialog, $document, userGroupService, $q, userService, $translate) {
 
     var tenantId = $stateParams.tenantId;
     var customerId = $stateParams.customerId;
@@ -100,6 +100,7 @@ export default function UserGroupController($scope, $state, types, $stateParams,
         addItemController: 'AddGroupModelController',
         addItemTemplateUrl: addDataModel,
         parentCtl: vm,
+        addIcon:"group_add",
 
         actionsList: groupActionsList,
 
@@ -139,7 +140,7 @@ export default function UserGroupController($scope, $state, types, $stateParams,
 
         } else if (usersType === 'customer') {
             fetchUsersGroupFunction = function(pageLink) {
-                return usergroupService.getGroups(vm.customerId, pageLink);
+                return userGroupService.getGroups(vm.customerId, pageLink);
             };
 
             saveUserGroupFunction = function(usergroup) {
@@ -149,7 +150,7 @@ export default function UserGroupController($scope, $state, types, $stateParams,
                     id: customerId
                 };
 
-                return usergroupService.saveUserGroup(usergroup);
+                return userGroupService.saveUserGroup(usergroup);
             };
 
             refreshUsersGroupParamsFunction = function() {
@@ -167,7 +168,7 @@ export default function UserGroupController($scope, $state, types, $stateParams,
     }
 
     function deleteUserGroup(userGroupId) {
-        return usergroupService.deleteUserGroup(userGroupId);
+        return userGroupService.deleteUserGroup(userGroupId);
     }
 
     function deleteUserGroupTitle(usergroup) {
@@ -224,7 +225,7 @@ export default function UserGroupController($scope, $state, types, $stateParams,
     function saveGroup(item) {
 
         var deferred = $q.defer();
-        usergroupService.saveUserGroup(item).then(function success(response) {
+        userGroupService.saveUserGroup(item).then(function success(response) {
             initController();
             deferred.resolve(response);
         }, function fail(response) {
@@ -259,7 +260,7 @@ export default function UserGroupController($scope, $state, types, $stateParams,
                 }
 
                 $mdDialog.show({
-                    controller: 'AddUsersToGroupController',
+                    controller: 'AssignUsersToGroupController',
                     controllerAs: 'vm',
                     templateUrl: assignUserToGroups,
                     locals: {
@@ -286,7 +287,7 @@ export default function UserGroupController($scope, $state, types, $stateParams,
 
         var pageSize = 10;
 
-        usergroupService.assignedUsers(id, {
+        userGroupService.assignedUsers(id, {
             limit: pageSize,
             textSearch: ''
         }).then(
@@ -304,7 +305,7 @@ export default function UserGroupController($scope, $state, types, $stateParams,
                 }
 
                 $mdDialog.show({
-                    controller: 'DeleteUsersToGroupController',
+                    controller: 'UnassignUsersFromGroupController',
                     controllerAs: 'vm',
                     templateUrl: unassignUserToGroups,
                     locals: {

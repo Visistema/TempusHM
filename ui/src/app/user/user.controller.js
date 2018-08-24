@@ -19,7 +19,7 @@ import addUserTemplate from './add-user.tpl.html';
 import userCard from './user-card.tpl.html';
 import activationLinkDialogTemplate from './activation-link.dialog.tpl.html';
 import assignGroupsToUsers from './assign-to-user.tpl.html';
-import unassignGroupsToUsers from './unassign-to-user.tpl.html';
+import unassignGroupsToUsers from './unassign-from-user.tpl.html';
 //import unassignUserToGroups from './unassign-to-group.tpl.html';
 
 
@@ -27,7 +27,7 @@ import unassignGroupsToUsers from './unassign-to-user.tpl.html';
 
 
 /*@ngInject*/
-export default function UserController(usergroupService, userService, toast, $scope, $mdDialog, $document, $controller, $state, $stateParams, $translate, types) {
+export default function UserController(userGroupService, userService, toast, $scope, $mdDialog, $document, $controller, $state, $stateParams, $translate, types) {
 
     var tenantId = $stateParams.tenantId;
     var customerId = $stateParams.customerId;
@@ -220,7 +220,7 @@ export default function UserController(usergroupService, userService, toast, $sc
 
         var pageSize = 10;
 
-        usergroupService.getGroups(vm.customerId, {
+        userGroupService.getGroups(vm.customerId, {
             limit: pageSize,
             textSearch: ''
         }).then(
@@ -238,7 +238,7 @@ export default function UserController(usergroupService, userService, toast, $sc
                 }
 
                 $mdDialog.show({
-                    controller: 'AddGroupsToUserController',
+                    controller: 'AssignGroupsToUserController',
                     controllerAs: 'vm',
                     templateUrl: assignGroupsToUsers,
                     locals: {
@@ -270,7 +270,7 @@ export default function UserController(usergroupService, userService, toast, $sc
 
          var pageSize = 10;
 
-         usergroupService.assignedGroups(id, {
+         userGroupService.assignedGroups(id, {
              limit: pageSize,
              textSearch: ''
          }).then(
@@ -288,7 +288,7 @@ export default function UserController(usergroupService, userService, toast, $sc
                  }
 
                  $mdDialog.show({
-                     controller: 'DeleteGroupsToUserController',
+                     controller: 'UnassignGroupsFromUserController',
                      controllerAs: 'vm',
                      templateUrl: unassignGroupsToUsers,
                      locals: {

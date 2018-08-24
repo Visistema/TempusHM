@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export default angular.module('tempus.api.usergroup', [])
-    .factory('usergroupService', UsergroupService)
+export default angular.module('tempus.api.userGroup', [])
+    .factory('userGroupService', userGroupService)
     .name;
 
 /*@ngInject*/
-function UsergroupService($q, $http) {
+function userGroupService($q, $http) {
 
 
     var service = {

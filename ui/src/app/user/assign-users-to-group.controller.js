@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 /*@ngInject*/
-export default function AddUsersToGroupController($scope, toast, userService, usergroupService, $mdDialog, groupId, users, customerId, $translate) {
+export default function AssignUsersToGroupController($scope, toast, userService, userGroupService, $mdDialog, groupId, users, customerId, $translate) {
 
     var vm = this;
 
@@ -36,7 +36,7 @@ export default function AddUsersToGroupController($scope, toast, userService, us
 
     $scope.assignedUsers = function() {
         var pageSize = 100;
-        usergroupService.assignedUsers(vm.groupId, {
+        userGroupService.assignedUsers(vm.groupId, {
             limit: pageSize,
             textSearch: ''
         }).then(
@@ -108,7 +108,7 @@ export default function AddUsersToGroupController($scope, toast, userService, us
     }
 
     function assign() {
-        usergroupService.assignUserToGroup(vm.groupId, vm.users.selections).then(
+        userGroupService.assignUserToGroup(vm.groupId, vm.users.selections).then(
 
             function success() {
 
