@@ -1,15 +1,6 @@
 /**
-<<<<<<< HEAD
-<<<<<<< HEAD
  * Copyright © 2016-2018 The Thingsboard Authors
  * Modifications © 2017-2018 Hashmap, Inc
-=======
- * Copyright © 2017-2018 Hashmap, Inc
->>>>>>> 2a1e3c7... #Added missing headers.
-=======
- * Copyright © 2016-2018 The Thingsboard Authors
- * Modifications © 2017-2018 Hashmap, Inc
->>>>>>> 8ca597b... changing license header
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,21 +53,7 @@ public class CustomerGroupEntity extends BaseSqlEntity<CustomerGroup> implements
     @Column(name = ModelConstants.CUSTOMER_GROUP_CUSTOMER_ID)
     private String customerId;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     @ElementCollection(fetch = FetchType.EAGER)
-=======
-    @ManyToMany(mappedBy = ModelConstants.GROUPS_PROPERTY)
-    private List<User> users;
-
-=======
->>>>>>> 494385c... #Updated model and entities for user and group. To have only ids instead of objects for many to many relationship.
-    @ElementCollection()
->>>>>>> a9f7a78... #Updated SQL entity and data models for User and group to support group feature with multiple group constraint.
-=======
-    @ElementCollection(fetch = FetchType.EAGER)
->>>>>>> afd3d24... #Fixed Issue: Policies are not coming in CustomerGroup model.
     @CollectionTable(name = ModelConstants.CUSTOMER_GROUP_POLICY_TABLE_NAME, joinColumns = @JoinColumn(name = ModelConstants.CUSTOMER_GROUP_POLICY_ID))
     @Column(name = ModelConstants.CUSTOMER_GROUP_POLICY_COLUMN)
     private List<String> policies;
@@ -119,19 +96,9 @@ public class CustomerGroupEntity extends BaseSqlEntity<CustomerGroup> implements
         customerGroup.setCustomerId(new CustomerId(UUIDConverter.fromString(customerId)));
         customerGroup.setTitle(title);
         customerGroup.setAdditionalInfo(additionalInfo);
-<<<<<<< HEAD
-<<<<<<< HEAD
         if (policies != null && !policies.isEmpty()) {
             customerGroup.setPolicies(policies);
         }
-=======
-        customerGroup.setPolicies(policies);
->>>>>>> afd3d24... #Fixed Issue: Policies are not coming in CustomerGroup model.
-=======
-        if (policies != null && !policies.isEmpty()) {
-            customerGroup.setPolicies(policies);
-        }
->>>>>>> cff5b04... Adding changes in customer group entity
         return customerGroup;
     }
 }

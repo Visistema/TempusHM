@@ -37,14 +37,7 @@ import com.hashmapinc.server.dao.model.SearchTextEntity;
 
 import javax.persistence.*;
 import java.util.Collection;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import java.util.List;
-=======
->>>>>>> 8f66f39... #Updated user model and entity to support group. Also, added upgrade datastore scripts.
-=======
-import java.util.List;
->>>>>>> a9f7a78... #Updated SQL entity and data models for User and group to support group feature with multiple group constraint.
 
 /**
  * Created by Valerii Sosliuk on 4/21/2017.
@@ -96,17 +89,7 @@ public class UserEntity extends BaseSqlEntity<User> implements SearchTextEntity<
         if (user.getCustomerId() != null) {
             this.customerId = UUIDConverter.fromTimeUUID(user.getCustomerId().getId());
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
 
-=======
-        if (user.getCustomerGroupId() != null) {
-            this.customerGroupId = UUIDConverter.fromTimeUUID(user.getCustomerGroupId().getId());
-        }
->>>>>>> 8f66f39... #Updated user model and entity to support group. Also, added upgrade datastore scripts.
-=======
-
->>>>>>> 494385c... #Updated model and entities for user and group. To have only ids instead of objects for many to many relationship.
         this.email = user.getEmail();
         this.firstName = user.getFirstName();
         this.lastName = user.getLastName();

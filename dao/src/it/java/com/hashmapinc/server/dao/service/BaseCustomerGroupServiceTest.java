@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> cbe140b... Adding license header
 /**
  * Copyright © 2016-2018 The Thingsboard Authors
  * Modifications © 2017-2018 Hashmap, Inc
@@ -18,11 +14,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-<<<<<<< HEAD
-=======
->>>>>>> d9aeede... Adding integration tests for Customer Group Service
-=======
->>>>>>> cbe140b... Adding license header
 package com.hashmapinc.server.dao.service;
 
 import com.datastax.driver.core.utils.UUIDs;
@@ -122,19 +113,6 @@ public abstract class BaseCustomerGroupServiceTest extends AbstractServiceTest {
     }
 
     @Test(expected = DataValidationException.class)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    public void saveCustomerGroupWithEmptyTenant() {
-        CustomerGroup customerGroup = new CustomerGroup();
-        customerGroup.setTitle("My Group");
-        customerGroupService.saveCustomerGroup(customerGroup);
-    }
-
-    @Test(expected = DataValidationException.class)
->>>>>>> d9aeede... Adding integration tests for Customer Group Service
-=======
->>>>>>> 094b608... Removing Group test with empty tenantId and customerId
     public void saveCustomerGroupWithInvalidTenant() {
         CustomerGroup customerGroup = new CustomerGroup();
         customerGroup.setTitle("My Group");
@@ -143,20 +121,6 @@ public abstract class BaseCustomerGroupServiceTest extends AbstractServiceTest {
     }
 
     @Test(expected = DataValidationException.class)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    public void saveCustomerGroupWithEmptyCustomer() {
-        CustomerGroup customerGroup = new CustomerGroup();
-        customerGroup.setTenantId(tenantId);
-        customerGroup.setTitle("My Group");
-        customerGroupService.saveCustomerGroup(customerGroup);
-    }
-
-    @Test(expected = DataValidationException.class)
->>>>>>> d9aeede... Adding integration tests for Customer Group Service
-=======
->>>>>>> 094b608... Removing Group test with empty tenantId and customerId
     public void saveCustomerGroupWithInvalidCustomer() {
         CustomerGroup customerGroup = new CustomerGroup();
         customerGroup.setTenantId(tenantId);

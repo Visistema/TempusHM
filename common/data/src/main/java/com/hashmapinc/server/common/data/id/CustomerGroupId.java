@@ -1,15 +1,6 @@
 /**
-<<<<<<< HEAD
-<<<<<<< HEAD
  * Copyright © 2016-2018 The Thingsboard Authors
  * Modifications © 2017-2018 Hashmap, Inc
-=======
- * Copyright © 2017-2018 Hashmap, Inc
->>>>>>> 2a1e3c7... #Added missing headers.
-=======
- * Copyright © 2016-2018 The Thingsboard Authors
- * Modifications © 2017-2018 Hashmap, Inc
->>>>>>> 8ca597b... changing license header
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

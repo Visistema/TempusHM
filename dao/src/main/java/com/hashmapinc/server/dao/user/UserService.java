@@ -65,14 +65,6 @@ public interface UserService {
 	void deleteCustomerUsers(TenantId tenantId, CustomerId customerId);
 
 	User assignGroups(UserId userId , List<CustomerGroupId> customerGroupIds);
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 	User unassignGroups(UserId userId , List<CustomerGroupId> customerGroupIds);
-=======
->>>>>>> 1af01a8... Added assingGroups to user support.
-=======
-
-	User unassignGroups(UserId userId , List<CustomerGroupId> customerGroupIds);
->>>>>>> ee50baf... added unassign user api to group service
 }

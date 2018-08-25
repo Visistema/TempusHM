@@ -21,14 +21,7 @@ import com.datastax.driver.mapping.annotations.Column;
 import com.datastax.driver.mapping.annotations.PartitionKey;
 import com.datastax.driver.mapping.annotations.Table;
 import com.fasterxml.jackson.databind.JsonNode;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import com.hashmapinc.server.common.data.CustomerGroup;
-=======
->>>>>>> 8f66f39... #Updated user model and entity to support group. Also, added upgrade datastore scripts.
-=======
-import com.hashmapinc.server.common.data.CustomerGroup;
->>>>>>> 494385c... #Updated model and entities for user and group. To have only ids instead of objects for many to many relationship.
 import com.hashmapinc.server.common.data.id.CustomerGroupId;
 import com.hashmapinc.server.dao.model.ModelConstants;
 import lombok.EqualsAndHashCode;
@@ -42,22 +35,9 @@ import com.hashmapinc.server.dao.model.SearchTextEntity;
 import com.hashmapinc.server.dao.model.type.AuthorityCodec;
 import com.hashmapinc.server.dao.model.type.JsonCodec;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
-=======
-import javax.persistence.CollectionTable;
-import javax.persistence.ElementCollection;
-import javax.persistence.JoinColumn;
-import java.util.Collection;
->>>>>>> 8f66f39... #Updated user model and entity to support group. Also, added upgrade datastore scripts.
-=======
-import javax.persistence.*;
-import java.util.Collection;
-import java.util.List;
->>>>>>> 494385c... #Updated model and entities for user and group. To have only ids instead of objects for many to many relationship.
 import java.util.UUID;
 
 import static com.hashmapinc.server.dao.model.ModelConstants.*;
@@ -151,20 +131,6 @@ public final class UserEntity implements SearchTextEntity<User> {
 		this.customerId = customerId;
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    public UUID getCustomerGroupId() {
-        return customerGroupId;
-    }
-
-    public void setCustomerGroupId(UUID customerGroupId) {
-        this.customerGroupId = customerGroupId;
-    }
-
->>>>>>> 8f66f39... #Updated user model and entity to support group. Also, added upgrade datastore scripts.
-=======
->>>>>>> 494385c... #Updated model and entities for user and group. To have only ids instead of objects for many to many relationship.
     public String getEmail() {
 		return email;
 	}
@@ -211,19 +177,6 @@ public final class UserEntity implements SearchTextEntity<User> {
         return searchText;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    public Collection<String> getPolicies() {
-        return policies;
-    }
-
-    public void setPolicies(Collection<String> policies) {
-        this.policies = policies;
-    }
->>>>>>> 8f66f39... #Updated user model and entity to support group. Also, added upgrade datastore scripts.
-=======
->>>>>>> 494385c... #Updated model and entities for user and group. To have only ids instead of objects for many to many relationship.
 
     @Override
     public User toData() {

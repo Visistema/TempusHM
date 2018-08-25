@@ -28,18 +28,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.hashmapinc.server.common.data.Customer;
 import com.hashmapinc.server.common.data.Tenant;
 import com.hashmapinc.server.common.data.User;
-<<<<<<< HEAD
-<<<<<<< HEAD
 import com.hashmapinc.server.common.data.id.*;
-=======
-import com.hashmapinc.server.common.data.id.CustomerGroupId;
-import com.hashmapinc.server.common.data.id.CustomerId;
-import com.hashmapinc.server.common.data.id.TenantId;
-import com.hashmapinc.server.common.data.id.UserId;
->>>>>>> 1af01a8... Added assingGroups to user support.
-=======
-import com.hashmapinc.server.common.data.id.*;
->>>>>>> 3b98754... Fixed of issues related to UserId for groups
 import com.hashmapinc.server.common.data.page.TextPageData;
 import com.hashmapinc.server.common.data.page.TextPageLink;
 import com.hashmapinc.server.common.data.security.Authority;
@@ -148,23 +137,10 @@ public class RestUserService extends AbstractEntityService implements UserServic
                 .queryParam("limit", pageLink.getLimit())
                 .queryParam("idOffset", idOffset);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
         List<UUID> usersUuid = userIds.stream().map(UUIDBased::getId).collect(Collectors.toList());
 
         ResponseEntity<String> response = restTemplate
                 .postForEntity(builder.build().encode().toUri(), usersUuid, String.class);
-=======
-
-        ResponseEntity<String> response = restTemplate
-                .postForEntity(builder.build().encode().toUri(), userIds, String.class);
->>>>>>> 48f766b... #Updated user and groups model to have only corresponding ids as a property instead of whole objects. Also, updated service and controller methods accordingly.
-=======
-        List<UUID> usersUuid = userIds.stream().map(UUIDBased::getId).collect(Collectors.toList());
-
-        ResponseEntity<String> response = restTemplate
-                .postForEntity(builder.build().encode().toUri(), usersUuid, String.class);
->>>>>>> 3b98754... Fixed of issues related to UserId for groups
         if(response.getStatusCode().equals(HttpStatus.OK)){
             JavaType type = mapper.getTypeFactory().constructParametrizedType(TextPageData.class, TextPageData.class, User.class);
             try {
@@ -375,10 +351,6 @@ public class RestUserService extends AbstractEntityService implements UserServic
         return user;
     }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> b7c515e... adding unassignGroups api to restUserService
     @Override
     public User unassignGroups(UserId userId , List<CustomerGroupId> customerGroupIds) {
         log.trace("Executing unassignGroups, UserId [{}] and customerGroupIds [{}]", userId, customerGroupIds);
@@ -387,11 +359,6 @@ public class RestUserService extends AbstractEntityService implements UserServic
         return findUserById(userId);
     }
 
-<<<<<<< HEAD
-=======
->>>>>>> 1af01a8... Added assingGroups to user support.
-=======
->>>>>>> b7c515e... adding unassignGroups api to restUserService
     private TextPageData<User> findUsers(TenantId tenantId, CustomerId customerId, TextPageLink pageLink){
         UUID idOffset = pageLink.getIdOffset() != null ? pageLink.getIdOffset() : ModelConstants.NULL_UUID;
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(identityUrl + "/list")
